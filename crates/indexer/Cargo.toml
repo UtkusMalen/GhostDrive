@@ -1,0 +1,10 @@
+[package]
+name = "ghostdrive-indexer"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+ghostdrive-core = { path = "../core" }
+redb = { workspace = true }
+tracing = { workspace = true }
+bincode = { workspace = true }
