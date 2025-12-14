@@ -1,0 +1,13 @@
+[package]
+name = "ghostdrive-network"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+ghostdrive-core = { path = "../core" }
+iroh = { workspace = true }
+iroh-blobs = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+hex = { workspace = true }
+rand = { workspace = true }
