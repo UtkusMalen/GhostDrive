@@ -6,5 +6,10 @@ edition = "2024"
 [dependencies]
 ghostdrive-core = { path = "../core" }
 redb = { workspace = true }
-tracing = { workspace = true }
 bincode = { workspace = true }
+tracing = { workspace = true }
+tokio = { workspace = true, features = ["sync", "fs", "time", "rt-multi-thread"] }
+notify = { workspace = true }
+mime_guess = { workspace = true }
+blake3 = { workspace = true }
+tracing-subscriber = { workspace = true }
