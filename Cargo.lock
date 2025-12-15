@@ -1117,7 +1117,6 @@ dependencies = [
 name = "ghostdrive-network"
 version = "0.1.0"
 dependencies = [
- "futures",
  "ghostdrive-core",
  "hex",
  "iroh",
