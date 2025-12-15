@@ -1,0 +1,13 @@
+[package]
+name = "ghostdrive-transcoder"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+ghostdrive-core = { path = "../core" }
+tokio = { workspace = true, features = ["process", "io-util"] }
+tracing = { workspace = true }
+bytes = { workspace = true }
+async-stream = { workspace = true }
+futures-core = { workspace = true }
+futures = { workspace = true }
