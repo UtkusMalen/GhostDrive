@@ -1,0 +1,15 @@
+[package]
+name = "ghostdrive-host"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+ghostdrive-core = { path = "../core" }
+ghostdrive-indexer = { path = "../indexer" }
+ghostdrive-network = { path = "../network" }
+ghostdrive-transcoder = { path = "../transcoder" }
+tokio = { workspace = true, features = ["sync", "rt-multi-thread", "macros"] }
+tokio-util = { workspace = true }
+tracing = { workspace = true }
+async-recursion = { workspace = true }
+mime_guess = { workspace = true }

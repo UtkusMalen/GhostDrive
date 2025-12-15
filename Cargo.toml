@@ -1,7 +1,7 @@
 [workspace]
 resolver = "2"
 members = [
-    "crates/core",
+    "crates/core", "crates/host",
     "crates/indexer",
     "crates/network",
     "crates/transcoder"
@@ -30,3 +30,4 @@ base64 = "0.22.1"
 async-stream = "0.3.6"
 futures = "0.3.31"
 futures-core = "0.3.31"
+async-recursion = "1.1.1"

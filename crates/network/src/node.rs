@@ -11,12 +11,13 @@ use iroh_blobs::{
     BlobFormat, Hash, ALPN,
 };
 use tokio::fs;
-use tracing::{error, info, warn};
+use tracing::{info, warn};
 use std::str::FromStr;
 
 pub struct StreamNode {
     endpoint: Endpoint,
     store: BlobStore,
+    _router: Router, // Keep router alive
     #[allow(dead_code)] // Kept for potential future use/export
     secret_key: SecretKey,
 }
@@ -79,17 +80,11 @@ impl StreamNode {
             .await
             .map_err(|e| StreamError::Iroh(e.to_string()))?;
 
+        // Setup protocol router (Handling Blobs ALPN)
         let blobs_protocol = BlobsProtocol::new(&store, None); // Use reference and None events
         let router = Router::builder(endpoint.clone())
             .accept(ALPN, blobs_protocol)
             .spawn();
-
-        // Spawn router task
-        tokio::spawn(async move {
-            if let Err(e) = router.shutdown().await {
-                error!("Router shutdown error: {}", e);
-            }
-        });
 
         // Log node details
         info!("GhostDrive Node Started");
@@ -111,6 +106,7 @@ impl StreamNode {
         Ok(Self {
             endpoint,
             store,
+            _router: router,
             secret_key,
         })
     }
